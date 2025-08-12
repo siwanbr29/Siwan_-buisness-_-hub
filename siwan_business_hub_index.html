@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Siwan Business Hub</title>
+  <meta name="description" content="Siwan City — Business Group Directory & Local Hub" />
+  <!-- Tailwind via CDN for quick static site styling -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* small extra styles */
+    .card-image { background-size: cover; background-position: center; }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased">
+  <!-- Header -->
+  <header class="bg-white shadow">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3">
+        <div class="w-10 h-10 bg-indigo-600 rounded-full flex items-center justify-center text-white font-bold">S</div>
+        <div>
+          <h1 class="text-lg font-semibold">Siwan Business Hub</h1>
+          <p class="text-xs text-gray-500">Connecting local businesses & customers</p>
+        </div>
+      </a>
+      <nav class="hidden md:flex gap-4 items-center">
+        <a href="#businesses" class="text-sm hover:text-indigo-600">Directory</a>
+        <a href="#events" class="text-sm hover:text-indigo-600">Events</a>
+        <a href="#about" class="text-sm hover:text-indigo-600">About</a>
+        <a href="#contact" class="px-3 py-2 bg-indigo-600 text-white rounded text-sm">Contact</a>
+      </nav>
+      <button id="menuBtn" class="md:hidden px-2 py-1 border rounded">Menu</button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="bg-gradient-to-r from-indigo-50 to-white">
+    <div class="max-w-6xl mx-auto px-4 py-12 md:py-20">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div>
+          <h2 class="text-3xl md:text-4xl font-extrabold">Discover businesses in <span class="text-indigo-600">Siwan</span></h2>
+          <p class="mt-3 text-gray-600">Search shops, services, restaurants, professionals and events. Built for local growth — promote your business, reach more customers.</p>
+
+          <div class="mt-6">
+            <div class="flex gap-2">
+              <input id="searchInput" type="search" placeholder="Search business or service (e.g., bakery, electrician)" class="flex-1 px-4 py-3 border rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-200" />
+              <select id="categorySelect" class="px-4 py-3 border rounded">
+                <option value="all">All categories</option>
+              </select>
+              <button id="searchBtn" class="px-4 py-3 bg-indigo-600 text-white rounded">Search</button>
+            </div>
+            <p id="resultsCount" class="text-sm text-gray-500 mt-2">Showing <span class="font-medium" id="countNum">0</span> businesses</p>
+          </div>
+        </div>
+
+        <div class="hidden md:block">
+          <div class="w-full h-64 rounded-lg overflow-hidden shadow-lg card-image" style="background-image: url('https://images.unsplash.com/photo-1505691723518-36a226b9b8b3?auto=format&fit=crop&w=1200&q=60');"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main content -->
+  <main class="max-w-6xl mx-auto px-4 py-10">
+    <!-- Categories -->
+    <section class="mb-8">
+      <h3 class="text-xl font-semibold mb-4">Categories</h3>
+      <div id="categories" class="flex flex-wrap gap-3"></div>
+    </section>
+
+    <!-- Businesses grid -->
+    <section id="businesses">
+      <h3 class="text-xl font-semibold mb-4">Business Directory</h3>
+      <div id="grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    </section>
+
+    <!-- Events -->
+    <section id="events" class="mt-12">
+      <h3 class="text-xl font-semibold mb-4">Upcoming & Recent</h3>
+      <div class="space-y-3">
+        <div class="p-4 bg-white rounded shadow-sm">
+          <div class="flex items-center justify-between">
+            <div>
+              <h4 class="font-semibold">Siwan Food Fest</h4>
+              <p class="text-sm text-gray-500">Aug 25, 2025 — Town Ground</p>
+            </div>
+            <a href="#" class="text-indigo-600 text-sm">Learn more</a>
+          </div>
+        </div>
+        <div class="p-4 bg-white rounded shadow-sm">
+          <div class="flex items-center justify-between">
+            <div>
+              <h4 class="font-semibold">Small Business Workshop</h4>
+              <p class="text-sm text-gray-500">Sep 10, 2025 — Community Hall</p>
+            </div>
+            <a href="#" class="text-indigo-600 text-sm">Register</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="mt-12 bg-white p-6 rounded shadow-sm">
+      <h3 class="text-xl font-semibold">About Siwan Business Hub</h3>
+      <p class="mt-2 text-gray-600">A community-driven directory for Siwan city businesses. This static site is easy to host anywhere (GitHub Pages, Netlify, Vercel, or a simple shared host). Update businesses in the code or replace the data block with a JSON file if you later want a dynamic source.</p>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="mt-8 bg-white p-6 rounded shadow-sm">
+      <h3 class="text-xl font-semibold">Contact</h3>
+      <p class="text-gray-600 mt-2">For listing requests or partnerships, email: <a href="mailto:info@siwanhub.example" class="text-indigo-600">info@siwanhub.example</a></p>
+
+      <form id="contactForm" class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <input type="text" placeholder="Your name" required class="px-3 py-2 border rounded" />
+        <input type="email" placeholder="Email" required class="px-3 py-2 border rounded" />
+        <input type="text" placeholder="Business (optional)" class="px-3 py-2 border rounded md:col-span-2" />
+        <textarea placeholder="Message" rows="4" class="px-3 py-2 border rounded md:col-span-2"></textarea>
+        <button type="submit" class="bg-indigo-600 text-white px-4 py-2 rounded md:col-span-2">Send</button>
+      </form>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t mt-12">
+    <div class="max-w-6xl mx-auto px-4 py-6 text-sm text-gray-600 flex flex-col md:flex-row justify-between items-center gap-4">
+      <div>© <span id="year"></span> Siwan Business Hub — Built with ❤️ for Siwan</div>
+      <div class="flex gap-3">
+        <a href="#" class="hover:text-indigo-600">Privacy</a>
+        <a href="#" class="hover:text-indigo-600">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Sample data and scripts -->
+  <script>
+    // Sample business data — replace or expand with your own entries
+    const BUSINESSES = [
+      {id:1, name:'Jai Bakery', category:'Food & Bakery', desc:'Fresh breads & sweets', phone:'+91 70000 11111', address:'Main Road, Siwan', img:'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=60'},
+      {id:2, name:'Sharma Electricals', category:'Services', desc:'Home wiring & appliances', phone:'+91 70000 22222', address:'Station Road', img:'https://images.unsplash.com/photo-1580910051073-6a3f1f9b45d1?auto=format&fit=crop&w=800&q=60'},
+      {id:3, name:'Kumar Clinic', category:'Healthcare', desc:'General physician & diagnostics', phone:'+91 70000 33333', address:'Civil Line', img:'https://images.unsplash.com/photo-1580281657521-7b8b0a5f6f9f?auto=format&fit=crop&w=800&q=60'},
+      {id:4, name:'Rani Boutique', category:'Fashion', desc:'Women ethnic wear', phone:'+91 70000 44444', address:'Market Area', img:'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=800&q=60'},
+      {id:5, name:'Siwan Taxi Service', category:'Transport', desc:'Local & Outstation cabs', phone:'+91 70000 55555', address:'Bus Stand', img:'https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=800&q=60'},
+      {id:6, name:'Green Grocers', category:'Grocery', desc:'Fresh fruits & vegetables', phone:'+91 70000 66666', address:'Bazar Chowk', img:'https://images.unsplash.com/photo-1506806732259-39c2d0268443?auto=format&fit=crop&w=800&q=60'}
+    ];
+
+    // Populate categories select & chips
+    const categories = ['All', ...Array.from(new Set(BUSINESSES.map(b=>b.category)))];
+    const catSelect = document.getElementById('categorySelect');
+    const catContainer = document.getElementById('categories');
+    categories.forEach((c, i)=>{
+      const opt = document.createElement('option'); opt.value = c.toLowerCase(); opt.textContent = c; catSelect.appendChild(opt);
+      if(i>0){
+        const chip = document.createElement('button');
+        chip.className = 'px-3 py-1 bg-white border rounded text-sm shadow-sm';
+        chip.textContent = c; chip.addEventListener('click', ()=>{ filterByCategory(c); });
+        catContainer.appendChild(chip);
+      }
+    });
+
+    // Render business cards
+    const grid = document.getElementById('grid');
+    const resultsCount = document.getElementById('countNum');
+    function render(list){
+      grid.innerHTML='';
+      list.forEach(b=>{
+        const card = document.createElement('article');
+        card.className = 'bg-white rounded shadow-sm overflow-hidden';
+        card.innerHTML = `
+          <div class="h-40 card-image" style="background-image:url('${b.img}')"></div>
+          <div class="p-4">
+            <h4 class="font-semibold text-lg">${b.name}</h4>
+            <p class="text-sm text-gray-500">${b.category} • ${b.address}</p>
+            <p class="mt-2 text-gray-700">${b.desc}</p>
+            <div class="mt-4 flex items-center justify-between">
+              <a href="tel:${b.phone}" class="text-sm text-indigo-600">Call</a>
+              <button class="text-sm border px-3 py-1 rounded" onclick="openCard(${b.id})">Details</button>
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+      resultsCount.textContent = list.length;
+    }
+
+    // Basic search & filters
+    function normalize(s){ return s?.toString().toLowerCase() ?? ''; }
+    function search(term, category){
+      term = normalize(term);
+      let res = BUSINESSES.filter(b=>{
+        const inCat = (category === 'all' || !category) ? true : normalize(b.category)===category;
+        const inText = normalize(b.name).includes(term) || normalize(b.desc).includes(term) || normalize(b.address).includes(term);
+        return inCat && (!term || inText);
+      });
+      render(res);
+    }
+
+    document.getElementById('searchBtn').addEventListener('click', ()=>{
+      const term = document.getElementById('searchInput').value;
+      const cat = document.getElementById('categorySelect').value;
+      search(term, cat);
+    });
+
+    // respond to enter in search
+    document.getElementById('searchInput').addEventListener('keydown', (e)=>{ if(e.key === 'Enter'){ e.preventDefault(); document.getElementById('searchBtn').click(); } });
+
+    // category chips
+    function filterByCategory(c){
+      const key = c.toLowerCase();
+      document.getElementById('categorySelect').value = key;
+      search(document.getElementById('searchInput').value, key);
+    }
+
+    // details modal (simple alert fallback)
+    function openCard(id){
+      const b = BUSINESSES.find(x=>x.id===id);
+      if(!b) return;
+      const info = `${b.name}\nCategory: ${b.category}\nAddress: ${b.address}\nPhone: ${b.phone}\n\n${b.desc}`;
+      alert(info);
+    }
+
+    // initial render
+    render(BUSINESSES);
+
+    // small UI wiring
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // mobile menu
+    document.getElementById('menuBtn').addEventListener('click', ()=>{
+      alert('Use the top links to navigate. For mobile, scroll to sections.');
+    });
+
+    // contact form handler (simple client-side behavior)
+    document.getElementById('contactForm').addEventListener('submit', (e)=>{
+      e.preventDefault();
+      alert('Thanks! Your message was sent (demo). Replace form handler with server endpoint or use Formspree/GitHub Forms for static hosting.');
+      e.target.reset();
+    });
+  </script>
+</body>
+</html>
